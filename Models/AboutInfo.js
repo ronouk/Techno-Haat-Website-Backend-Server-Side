@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { objectId } = mongoose.Schema.Types;
+// const { objectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
 const aboutInfoSchema = mongoose.Schema({
