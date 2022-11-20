@@ -7,6 +7,7 @@ const aboutController = require("../Controllers/about.controller");
 router
   .route("/")
   .get(aboutController.getAbout)
+  .post(aboutController.createAboutInfoSchema)
   .put(aboutController.updateAbout);
 
 module.exports = router;

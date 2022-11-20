@@ -1,46 +1,41 @@
 const mongoose = require("mongoose");
 // const { objectId } = mongoose.Schema.Types;
-const validator = require("validator");
 
 const aboutInfoSchema = mongoose.Schema({
-  image1: {
-    type: Image,
-    require: [true, "Please upload a image"],
+  aboutBannerImage: {
+    type: String,
   },
 
-  image2: {
-    type: Image,
-    require: [true, "Please upload a image"],
+  aboutBannerImageMini: {
+    type: String,
   },
 
   sectionName: {
     type: String,
-    require: [true, "Please enter your website section name"],
+    /* require: [false, "Please enter your website section name"], */
   },
-  title1: {
+  sectionTitle: {
     type: String,
-    require: [true, "Please Enter your first title"],
+    /*  require: [false, "Please Enter your first title"], */
   },
-  title2: {
+  sectionSlogan: {
     type: String,
-    require: [false, "Enter your second title"],
+    /*  require: [false, "Enter your second title"], */
   },
-  description: {
+  sectionDescription: {
     type: String,
-    require: [false, "Write your description here"],
+    /* require: [false, "Write your description here"], */
   },
-  contries: {
+  miniSlogan: {
     type: String,
-    require: [false, "Write your description here"],
+    /* require: [false, "Write your description here"], */
   },
-  icons: {
+  aboutPointList: {
     type: String,
-    require: [true, "Enter your ICON"],
-  },
-  list: {
-    type: Array,
-    require: [false, "list"],
+    /*  require: [false, "Enter your ICON"], */
   },
 });
 
-module.exports = aboutInfoSchema;
+const aboutInfo = mongoose.model("about", aboutInfoSchema);
+
+module.exports = aboutInfo;

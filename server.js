@@ -5,9 +5,11 @@ const colors = require("colors");
 const app = require("./app");
 
 //database connection
-/* mongoose.connect(process.env.DATABASE_LOCAL).then(() => {
-  console.log(`Techno Haat Backend is connected with database successfully`);
-}); */
+mongoose.connect(process.env.DATABASE_LOCAL).then(() => {
+  console.log(
+    `Techno Haat Backend is connected with database successfully`.cyan.bold
+  );
+});
 
 const file = require("./test/test");
 const port = 5000;
