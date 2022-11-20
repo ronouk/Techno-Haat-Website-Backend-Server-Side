@@ -4,12 +4,12 @@ const {
 } = require("../Services/about.service");
 
 //operation = RU
-exports.createAboutInfoSchema = async (req, res, next) => {
+exports.createAboutInfoSchema = async (req, res) => {
   console.log(req.body);
   try {
     const result = await createAboutInfoSchema(req.body);
 
-    req.status(200).json({
+    res.status(200).json({
       status: "success",
       message: "Data inserted Successfully",
       data: result,
@@ -22,11 +22,12 @@ exports.createAboutInfoSchema = async (req, res, next) => {
     });
   }
 };
+
 exports.getAbout = async (req, res, next) => {
   try {
     const result = await getAboutInfoSchema(req.body);
 
-    req.status(200).json({
+    res.status(200).json({
       status: "success",
       message: "Data get Successfully",
       data: result,
@@ -39,6 +40,7 @@ exports.getAbout = async (req, res, next) => {
     });
   }
 };
+
 exports.updateAbout = async (req, res, next) => {
   res.send("about Updated!!");
 };
