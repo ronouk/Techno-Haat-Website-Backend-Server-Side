@@ -1,12 +1,12 @@
 //operation = RU
-const aboutInfoSchema = require("../Models/AboutInfo");
+const aboutInfo = require("../Models/AboutInfo");
 
 exports.createAboutInfoSchema = async (data) => {
-  const result = await aboutInfoSchema.create(data);
+  const result = await aboutInfo.create(data);
   return result;
 };
 
 exports.getAboutInfoSchema = async () => {
-  const result = await about.find();
+  const result = await aboutInfo.find();
   return result;
 };

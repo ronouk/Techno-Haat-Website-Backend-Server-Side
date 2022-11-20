@@ -30,12 +30,15 @@ const aboutInfoSchema = mongoose.Schema({
     type: String,
     /* require: [false, "Write your description here"], */
   },
-  aboutPointList: {
-    type: String,
-    /*  require: [false, "Enter your ICON"], */
-  },
+  aboutPointList: [
+    {
+      type: String,
+      /*  require: [false, "Enter your ICON"], */
+    },
+  ],
 });
 
 const aboutInfo = mongoose.model("about", aboutInfoSchema);
+console.log(aboutInfo);
 
 module.exports = aboutInfo;
