@@ -10,3 +10,8 @@ exports.getAboutInfoSchema = async () => {
   const result = await aboutInfo.find();
   return result;
 };
+
+exports.updateAboutSchema = async (data) => {
+  const result = await aboutInfo.updateMany(data);
+  return result;
+};

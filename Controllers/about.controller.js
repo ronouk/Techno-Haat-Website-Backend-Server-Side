@@ -1,6 +1,7 @@
 const {
   createAboutInfoSchema,
   getAboutInfoSchema,
+  updateAboutSchema,
 } = require("../Services/about.service");
 
 //operation = RU
@@ -42,5 +43,19 @@ exports.getAbout = async (req, res, next) => {
 };
 
 exports.updateAbout = async (req, res, next) => {
-  res.send("about Updated!!");
+  try {
+    const result = await updateAboutSchema(req.body);
+
+    res.status(200).json({
+      status: "success",
+      message: "Data Updated Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "data couldn't update an error occurred",
+      error: error.message,
+    });
+  }
 };
