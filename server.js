@@ -10,22 +10,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     `Techno Haat Backend is connected with database successfully`.cyan.bold
   );
 });
-
-const file = require("./test/test");
-const port = 5000;
-
-const folders = ["test1", "test2", "test3", "test4"];
-
-for (const folder of folders) {
-  file.createFolder(`/test/${folder}`);
-}
-
-// file.createFolder("/test/test1");
-const createRoutes = ["nav", "navBanner", "blog"];
-
-/* for (const route of createRoutes) {
-  file.createFile(route);
-} */
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(
