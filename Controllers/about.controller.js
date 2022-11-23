@@ -4,7 +4,7 @@ const {
   updateAboutSchema,
 } = require("../Services/about.service");
 
-//operation = RU
+//operation = CRU
 exports.createAboutInfoSchema = async (req, res) => {
   console.log(req.body);
   try {
