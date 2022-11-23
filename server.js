@@ -5,7 +5,7 @@ const colors = require("colors");
 const app = require("./app");
 
 //database connection
-mongoose.connect(process.env.DATABASE_LOCAL).then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log(
     `Techno Haat Backend is connected with database successfully`.cyan.bold
   );
