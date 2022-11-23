@@ -33,7 +33,10 @@ app.use("/service", serviceRoute);
 app.use("/team", teamRoute);
 
 app.get("/", (req, res) => {
-  res.send("<h1>Techno Haat server is connected!!</h1>");
+  res.send(`<h1>Techno Haat server is connected and responding!!</h1>
+  <br/>
+  <p> We use the flowing approach for database operation on three routes in the "about" section get,post,put ► <a href="https://techno-haat-website-backend-server-side.vercel.app/about">Click here for get about data</a></p>
+  `);
 });
 
 module.exports = app;
