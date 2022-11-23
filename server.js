@@ -13,7 +13,5 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log(
-    `Techno Haat Backend app listening on port ${port} http://localhost:${port}/ `
-  );
+  console.log(`Techno Haat Backend app listening on port ${port}`);
 });
