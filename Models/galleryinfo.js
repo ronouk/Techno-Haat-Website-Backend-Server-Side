@@ -5,18 +5,17 @@ const validator = require("validator");
 const galleryInfoSchema = mongoose.Schema({
   title: {
     type: String,
-    require: [true, "Enter image title"],
   },
 
   slogan: {
     type: String,
-    require: [true, "Enter slogan here"],
   },
 
-  images: {
-    type: Image,
-    require: [true, "Chose your image"],
-  },
+  images: [
+    {
+      type: String,
+    },
+  ],
 });
 
 module.exports = galleryInfoSchema;

@@ -26,7 +26,7 @@ app.use("/contact", contactRoute);
 app.use("/footer", footerRoute);
 app.use("/gallery", galleryRoute);
 app.use("/navigation", navRoute);
-app.use("/home/Banner", homeBannerRoute);
+app.use("/home/banner", homeBannerRoute);
 app.use("/projects", projectsRoute);
 app.use("/random", randomRoute);
 app.use("/service", serviceRoute);
@@ -36,6 +36,8 @@ app.get("/", (req, res) => {
   res.send(`<h1>Techno Haat server is connected and responding!!</h1>
   <br/>
   <p> We use the flowing approach for database operation on three routes in the "about" section get,post,put ► <a href="https://techno-haat-website-backend-server-side.vercel.app/about">Click here for get about data</a></p>
+
+  <p> Same as about api we have three database operation get,post,put in "Home Banner" section ► <a href="https://techno-haat-website-backend-server-side.vercel.app/home/banner">Click here for get Home Banner data</a></p>
   `);
 });
 
