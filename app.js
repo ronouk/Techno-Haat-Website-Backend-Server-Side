@@ -27,6 +27,7 @@ app.use("/footer", footerRoute);
 app.use("/gallery", galleryRoute);
 app.use("/navigation", navRoute);
 app.use("/home/banner", homeBannerRoute);
+
 app.use("/projects", projectsRoute);
 app.use("/random", randomRoute);
 app.use("/service", serviceRoute);
