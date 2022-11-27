@@ -4,7 +4,7 @@ const {
   createExpectationInfoSchema,
   getExpectationInfoSchema,
   updateExpectationInfoSchema,
-} = require("../Services/Expectation.service");
+} = require("../Services/expectation.service");
 
 exports.createExpectation = async (req, res, next) => {
   try {

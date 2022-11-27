@@ -19,6 +19,7 @@ const projectsRoute = require("./Routes/projects.route");
 const randomRoute = require("./Routes/random.route");
 const serviceRoute = require("./Routes/service.route");
 const teamRoute = require("./Routes/team.route");
+const expectationRoute = require("./Routes/expectation.route");
 
 app.use("/about", aboutRoute);
 app.use("/blog", blogRoute);
@@ -27,6 +28,7 @@ app.use("/footer", footerRoute);
 app.use("/gallery", galleryRoute);
 app.use("/navigation", navRoute);
 app.use("/home/banner", homeBannerRoute);
+app.use("/expectation", expectationRoute);
 
 app.use("/projects", projectsRoute);
 app.use("/random", randomRoute);
@@ -48,6 +50,8 @@ app.get("/", (req, res) => {
   <p> Footer Section Api /footer ► <a href="https://techno-haat-website-backend-server-side.vercel.app/footer">Click here for get Footer data</a></p>
 
   <p> Nav Section Api /navigation ► <a href="https://techno-haat-website-backend-server-side.vercel.app/navigation">Click here for get navigation data</a></p>
+
+  <p> Expectation Section Api /expectation  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/expectation ">Click here for get expectation  data</a></p>
 
   `);
 });
