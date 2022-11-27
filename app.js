@@ -44,6 +44,11 @@ app.get("/", (req, res) => {
 
   <p> Gallery Section Api /gallery ► <a href="https://techno-haat-website-backend-server-side.vercel.app/gallery">Click here for get Gallery data</a></p>
 
+
+  <p> Footer Section Api /footer ► <a href="https://techno-haat-website-backend-server-side.vercel.app/footer">Click here for get Footer data</a></p>
+
+  <p> Nav Section Api /navigation ► <a href="https://techno-haat-website-backend-server-side.vercel.app/navigation">Click here for get navigation data</a></p>
+
   `);
 });
 
