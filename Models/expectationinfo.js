@@ -21,6 +21,5 @@ const expectationInfoSchema = mongoose.Schema({
 });
 
 const expectationInfo = mongoose.model("expectation", expectationInfoSchema);
-console.log(expectationInfoSchema, "from schema");
 
 module.exports = expectationInfo;

@@ -10,7 +10,6 @@ app.use(express.json());
 // route
 const aboutRoute = require("./Routes/about.route");
 const blogRoute = require("./Routes/blog.route");
-const contactRoute = require("./Routes/contact.route");
 const footerRoute = require("./Routes/footer.route");
 const galleryRoute = require("./Routes/gallery.route");
 const navRoute = require("./Routes/nav.route");
@@ -20,22 +19,30 @@ const randomRoute = require("./Routes/random.route");
 const serviceRoute = require("./Routes/service.route");
 const teamRoute = require("./Routes/team.route");
 const expectationRoute = require("./Routes/expectation.route");
+const clientsRoute = require("./Routes/clients.route");
 
 app.use("/about", aboutRoute);
 app.use("/blog", blogRoute);
-app.use("/contact", contactRoute);
 app.use("/footer", footerRoute);
 app.use("/gallery", galleryRoute);
 app.use("/navigation", navRoute);
 app.use("/home/banner", homeBannerRoute);
 app.use("/expectation", expectationRoute);
+app.use("/clients", clientsRoute);
 
 app.use("/projects", projectsRoute);
 app.use("/random", randomRoute);
 app.use("/service", serviceRoute);
 app.use("/team", teamRoute);
 
-const complete = ["about", "home/banner", "gallery", "footer"];
+const complete = [
+  "about",
+  "home/banner",
+  "gallery",
+  "footer",
+  "expectation",
+  "clients",
+];
 
 app.get("/", (req, res) => {
   res.send(`<h1>Techno Haat server is connected and responding!!</h1>

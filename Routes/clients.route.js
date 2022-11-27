@@ -1,12 +1,13 @@
 //operation = RU
 const express = require("express");
 const router = express.Router();
-const contactController = require("../Controllers/contact.controller");
+const clientsController = require("../Controllers/clients.controller");
 // const veryfyToken = require("../middleware/veryfyToken");
 
 router
   .route("/")
-  .get(contactController.getContact)
-  .put(contactController.updateContact);
+  .post(clientsController.createClients)
+  .get(clientsController.getClients)
+  .put(clientsController.updateClients);
 
 module.exports = router;
