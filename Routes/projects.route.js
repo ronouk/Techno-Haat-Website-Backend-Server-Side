@@ -5,10 +5,14 @@ const projectsController = require("../Controllers/projects.controller");
 // const veryfyToken = require("../middleware/veryfyToken");
 
 router
-  .route("/")
-  .get(projectsController.getProjects)
-  .put(projectsController.updateProjects)
-  .post(projectsController.createProjects)
-  .delete(projectsController.deleteProjects);
+  .route("/content")
+  .get(projectsController.getProjectsContent)
+  .put(projectsController.updateProjectsContent)
+  .post(projectsController.createProjectsContent);
+router
+  .route("/list")
+  .get(projectsController.getProjectsList)
+  .put(projectsController.updateProjectsList)
+  .post(projectsController.createProjectsList);
 
 module.exports = router;
