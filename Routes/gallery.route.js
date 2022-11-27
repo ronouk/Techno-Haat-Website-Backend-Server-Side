@@ -6,8 +6,9 @@ const galleryController = require("../Controllers/gallery.controller");
 
 router
   .route("/")
-  .get(galleryController.getGallery)
   .post(galleryController.createGallery)
+  .get(galleryController.getGallery)
+  .put(galleryController.updateGallery)
   .delete(galleryController.deleteGallery);
 
 module.exports = router;
