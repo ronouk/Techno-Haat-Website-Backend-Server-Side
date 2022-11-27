@@ -60,6 +60,8 @@ app.get("/", (req, res) => {
 
   <p> Expectation Section Api /expectation  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/expectation ">Click here for get expectation  data</a></p>
 
+  <p> Clients Section Api /clients  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/clients ">Click here for get clients data</a></p>
+
   `);
 });
 
