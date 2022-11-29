@@ -46,4 +46,4 @@ const projectsListInfoSchema = mongoose.Schema({
 
 const projectsListInfo = mongoose.model("projectsList", projectsListInfoSchema);
 
-module.exports = projectsContentInfo;
+module.exports = projectsListInfo;
