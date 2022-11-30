@@ -44,6 +44,7 @@ const complete = [
   "clients",
   "projects/conternt",
   "projects/list",
+  "service/content",
 ];
 
 app.get("/", (req, res) => {
@@ -67,6 +68,8 @@ app.get("/", (req, res) => {
   <p> Projects Content Section Api /projects/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/projects/content ">Click here for get Projects Content Section data</a></p>
 
   <p> Projects list Section Api /projects/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/projects/list ">Click here for get Projects List Section data</a></p>
+
+  <p> Service Content Section Api /service/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/service/content ">Click here for get Service Content Section data</a></p>
 
   `);
 });

@@ -34,6 +34,5 @@ const footerInfoSchema = mongoose.Schema({
 });
 
 const footerInfo = mongoose.model("footer", footerInfoSchema);
-console.log(footerInfoSchema, "from schema");
 
 module.exports = footerInfo;

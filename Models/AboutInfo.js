@@ -39,6 +39,5 @@ const aboutInfoSchema = mongoose.Schema({
 });
 
 const aboutInfo = mongoose.model("about", aboutInfoSchema);
-console.log(aboutInfo);
 
 module.exports = aboutInfo;

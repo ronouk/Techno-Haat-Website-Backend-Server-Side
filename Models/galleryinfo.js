@@ -19,6 +19,5 @@ const galleryInfoSchema = mongoose.Schema({
 });
 
 const galleryInfo = mongoose.model("teamGallery", galleryInfoSchema);
-console.log(galleryInfoSchema, "from schema");
 
 module.exports = galleryInfo;

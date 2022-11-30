@@ -39,6 +39,5 @@ const homeBannerInfoSchema = mongoose.Schema({
 });
 
 const homeBannerInfo = mongoose.model("homeBanner", homeBannerInfoSchema);
-console.log(homeBannerInfo, "from schema");
 
 module.exports = homeBannerInfo;

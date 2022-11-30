@@ -6,7 +6,6 @@ const {
   updateHomeBannerInfoSchema,
 } = require("../Services/homeBanner.service");
 exports.createHomeBannerInfo = async (req, res) => {
-  console.log(req.body, "from controller");
   try {
     const result = await createHomeBannerInfoSchema(req.body);
 

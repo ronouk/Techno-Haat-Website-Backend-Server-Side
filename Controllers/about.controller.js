@@ -6,7 +6,6 @@ const {
 
 //operation = CRU
 exports.createAboutInfoSchema = async (req, res) => {
-  console.log(req.body);
   try {
     const result = await createAboutInfoSchema(req.body);
 

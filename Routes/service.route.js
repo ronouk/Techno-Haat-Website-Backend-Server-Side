@@ -5,8 +5,9 @@ const serviceController = require("../Controllers/service.controller");
 // const veryfyToken = require("../middleware/veryfyToken");
 
 router
-  .route("/")
-  .get(serviceController.getService)
-  .put(serviceController.updateService);
+  .route("/content")
+  .post(serviceController.createServicesContent)
+  .get(serviceController.getServicesContent)
+  .put(serviceController.updateServicesContent);
 
 module.exports = router;
