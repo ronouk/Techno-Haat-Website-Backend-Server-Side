@@ -1,6 +1,6 @@
 //operation = CRD
 
-//projects content section
+//Service content section
 const serviceContentInfo = require("../Models/serviceContentInfo");
 const servicesListInfo = require("../Models/serviceListInfo");
 
@@ -18,7 +18,7 @@ exports.updateServicesContentInfoSchema = async (data) => {
   return result;
 };
 
-//-------------------projects list section-------------------
+//-------------------Service list section-------------------
 exports.createServiceListInfoSchema = async (data) => {
   const result = await servicesListInfo.create(data);
   return result;

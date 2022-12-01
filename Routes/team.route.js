@@ -4,6 +4,18 @@ const router = express.Router();
 const teamController = require("../Controllers/team.controller");
 // const veryfyToken = require("../middleware/veryfyToken");
 
-router.route("/").get(teamController.getTeam).put(teamController.updateTeam);
+//team content route
+router
+  .route("/content")
+  .post(teamController.createTeamContent)
+  .get(teamController.getTeamContent)
+  .put(teamController.updateTeamContent);
+
+//team list route
+router
+  .route("/list")
+  .post(teamController.createTeamList)
+  .get(teamController.getTeamList)
+  .put(teamController.updateTeamList);
 
 module.exports = router;
