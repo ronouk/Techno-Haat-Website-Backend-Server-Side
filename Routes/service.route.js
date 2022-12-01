@@ -10,4 +10,11 @@ router
   .get(serviceController.getServicesContent)
   .put(serviceController.updateServicesContent);
 
+//service list route
+router
+  .route("/list")
+  .post(serviceController.createServicesList)
+  .get(serviceController.getServicesList)
+  .put(serviceController.updateServicesList);
+
 module.exports = router;

@@ -2,9 +2,7 @@
 
 //projects content section
 const serviceContentInfo = require("../Models/serviceContentInfo");
-
-//projects list section
-// const servicesListInfo = require("../Models/serviceinfo");
+const servicesListInfo = require("../Models/serviceListInfo");
 
 exports.createServicesContentInfoSchema = async (data) => {
   const result = await serviceContentInfo.create(data);
@@ -20,18 +18,17 @@ exports.updateServicesContentInfoSchema = async (data) => {
   return result;
 };
 
-//projects list section
-/* exports.createProjectsListInfoSchema = async (data) => {
+//-------------------projects list section-------------------
+exports.createServiceListInfoSchema = async (data) => {
   const result = await servicesListInfo.create(data);
   return result;
 };
 
-exports.getProjectsListInfoSchema = async () => {
+exports.getServiceListInfoSchema = async () => {
   const result = await servicesListInfo.find();
   return result;
 };
-exports.updateProjectsListInfoSchema = async (data) => {
+exports.updateServiceListInfoSchema = async (data) => {
   const result = await servicesListInfo.updateMany(data);
   return result;
 };
- */

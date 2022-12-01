@@ -3,6 +3,9 @@ const {
   createServicesContentInfoSchema,
   getServicesContentInfoSchema,
   updateServicesContentInfoSchema,
+  createServiceListInfoSchema,
+  getServiceListInfoSchema,
+  updateServiceListInfoSchema,
 } = require("../Services/service.service");
 
 //-----------------project Content---------------------------
@@ -59,10 +62,10 @@ exports.updateServicesContent = async (req, res, next) => {
 };
 
 //----------------------project List---------------------------
-/* 
+
 exports.createServicesList = async (req, res, next) => {
   try {
-    const result = await createServicesListInfoSchema(req.body);
+    const result = await createServiceListInfoSchema(req.body);
 
     res.status(200).json({
       status: "success",
@@ -79,7 +82,7 @@ exports.createServicesList = async (req, res, next) => {
 };
 exports.getServicesList = async (req, res, next) => {
   try {
-    const result = await getServicesListInfoSchema(req.body);
+    const result = await getServiceListInfoSchema(req.body);
 
     res.status(200).json({
       status: "success",
@@ -95,8 +98,9 @@ exports.getServicesList = async (req, res, next) => {
   }
 };
 exports.updateServicesList = async (req, res, next) => {
+  //servicelist update is not working properly have to work with body
   try {
-    const result = await updateServicesListInfoSchema(req.body);
+    const result = await updateServiceListInfoSchema(req.body);
 
     res.status(200).json({
       status: "success",
@@ -111,7 +115,7 @@ exports.updateServicesList = async (req, res, next) => {
     });
   }
 };
- */
+
 /* //unique project from list
 exports.getUniqueProject = async (req,res,next)=>{
   res.send("unique project success");
