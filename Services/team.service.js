@@ -2,10 +2,10 @@
 
 //---------------------Team content section---------------------
 const teamContentInfo = require("../Models/teamContentInfo");
-// const teamsListInfo = require("../Models/teamListInfo");
+const teamsListInfo = require("../Models/teamListInfo");
 
 exports.createTeamContentInfoSchema = async (data) => {
-  const result = await teamContentInfo.create(data);
+  const result = await teamContentInfo.insertMany(data);
   return result;
 };
 

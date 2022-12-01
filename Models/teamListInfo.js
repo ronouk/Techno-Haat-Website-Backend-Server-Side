@@ -2,10 +2,17 @@
 const mongoose = require("mongoose");
 
 const teamListInfoSchema = mongoose.Schema({
-  sectionName: String,
-  sectionSlogan: String,
-  title: String,
-  slogan: String,
+  name: String,
+  image: String,
+  designation: String,
+  social: [
+    [
+      {
+        type: String,
+      },
+    ],
+  ],
+  description: String,
 });
 
 const teamListInfo = mongoose.model("teamList", teamListInfoSchema);
