@@ -118,7 +118,7 @@ exports.updateServicesList = async (req, res, next) => {
   }
 };
 
-//unique project from list
+//unique service from list
 exports.getUniqueService = async (req, res, next) => {
   const serviceId = req.params.id;
   try {
@@ -156,11 +156,3 @@ exports.updateUniqueService = async (req, res, next) => {
     });
   }
 };
-/*
-exports.updateUniqueProject = async (req,res,next)=>{
-  res.send("unique project Updated!!");
-}
-
-exports.deleteUniqueProject = async (req,res,next)=>{
-  res.send("unique project deleted!!");
-} */

@@ -12,7 +12,11 @@ router
 router
   .route("/list")
   .get(projectsController.getProjectsList)
-  .put(projectsController.updateProjectsList)
   .post(projectsController.createProjectsList);
+//unique service route
+router
+  .route("/list/:id")
+  .get(projectsController.getUniqueProject)
+  .put(projectsController.updateUniqueProject);
 
 module.exports = router;

@@ -73,6 +73,8 @@ app.get("/", (req, res) => {
 
   <p> Service List Section Api /service/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/service/list ">Click here for get Service List Section data</a></p>
 
+  <p>unique Service Api /service/list/:id  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/service/list ">Click here add a /and desire id into the url</a></p>
+
   <p> Team Content Section Api /team/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/team/content ">Click here for get Team Content Section data</a></p
   
   <p> Team List Section Api /team/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/team/list ">Click here for get Team List Section data</a></p>

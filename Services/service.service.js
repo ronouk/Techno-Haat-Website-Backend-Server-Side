@@ -42,7 +42,6 @@ exports.getUniqueServiceInfoSchema = async (id) => {
 };
 exports.updateUniqueServiceInfoSchema = async (id, updatedData) => {
   const query = { _id: ObjectId(id) };
-  // const find = await servicesListInfo.find(query);
   const result = await servicesListInfo.updateMany(query, updatedData);
   return result;
 };

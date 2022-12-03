@@ -5,7 +5,8 @@ const {
   updateProjectsContentInfoSchema,
   createProjectsListInfoSchema,
   getProjectsListInfoSchema,
-  updateProjectsListInfoSchema,
+  updateUniqueProjectInfoSchema,
+  getUniqueProjectInfoSchema,
 } = require("../Services/projects.service");
 
 //project Content
@@ -97,7 +98,7 @@ exports.getProjectsList = async (req, res, next) => {
     });
   }
 };
-exports.updateProjectsList = async (req, res, next) => {
+/* exports.updateProjectsList = async (req, res, next) => {
   try {
     const result = await updateProjectsListInfoSchema(req.body);
 
@@ -112,18 +113,45 @@ exports.updateProjectsList = async (req, res, next) => {
       message: "projects List couldn't update an error occurred",
       error: error.message,
     });
+  } 
+};*/
+
+//unique project from list
+exports.getUniqueProject = async (req, res, next) => {
+  const ProjectId = req.params.id;
+  try {
+    const result = await getUniqueProjectInfoSchema(ProjectId);
+
+    res.status(200).json({
+      status: "success",
+      message: "Project Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Project Data an error occurred",
+      error: error.message,
+    });
   }
 };
 
-/* //unique project from list
-exports.getUniqueProject = async (req,res,next)=>{
-  res.send("unique project success");
-}
+exports.updateUniqueProject = async (req, res, next) => {
+  const ProjectId = req.params.id;
+  const updatedData = req.body;
+  try {
+    const result = await updateUniqueProjectInfoSchema(ProjectId, updatedData);
 
-exports.updateUniqueProject = async (req,res,next)=>{
-  res.send("unique project Updated!!");
-}
-
-exports.deleteUniqueProject = async (req,res,next)=>{
-  res.send("unique project deleted!!");
-} */
+    res.status(200).json({
+      status: "success",
+      message: "Project Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Project Data an error occurred",
+      error: error.message,
+    });
+  }
+};
