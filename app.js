@@ -79,6 +79,10 @@ app.get("/", (req, res) => {
   
   <p> Team List Section Api /team/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/team/list ">Click here for get Team List Section data</a></p>
 
+  <p> Blog Content Section Api /blog/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/blog/content ">Click here for get blog Content Section data</a></p>
+
+  <p> Blog List Section Api /blog/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/blog/list ">Click here for get blog List Section data</a></p>
+
   `);
 });
 

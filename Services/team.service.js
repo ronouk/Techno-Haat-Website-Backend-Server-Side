@@ -46,3 +46,8 @@ exports.updateTeamInfoSchema = async (id, updatedData) => {
   const result = await teamsListInfo.updateMany(query, updatedData);
   return result;
 };
+exports.deleteTeamInfoSchema = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const result = await teamsListInfo.deleteOne(query);
+  return result;
+};

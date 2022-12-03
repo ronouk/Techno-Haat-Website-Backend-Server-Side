@@ -157,3 +157,22 @@ exports.updateTeam = async (req, res, next) => {
     });
   }
 };
+
+exports.deleteTeam = async (req, res, next) => {
+  const teamId = req.params.id;
+  try {
+    const result = await getTeamInfoSchema(teamId);
+
+    res.status(200).json({
+      status: "success",
+      message: "Team List Data is deleted",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't deleted Team List Data an error occurred",
+      error: error.message,
+    });
+  }
+};

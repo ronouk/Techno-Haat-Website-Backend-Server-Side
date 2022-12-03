@@ -20,6 +20,7 @@ router
 router
   .route("/list/:id")
   .get(teamController.getTeam)
-  .put(teamController.updateTeam);
+  .put(teamController.updateTeam)
+  .delete(teamController.deleteTeam);
 
 module.exports = router;
