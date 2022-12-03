@@ -6,6 +6,8 @@ const {
   createServiceListInfoSchema,
   getServiceListInfoSchema,
   updateServiceListInfoSchema,
+  getUniqueServiceInfoSchema,
+  updateUniqueServiceInfoSchema,
 } = require("../Services/service.service");
 
 //-----------------project Content---------------------------
@@ -116,11 +118,45 @@ exports.updateServicesList = async (req, res, next) => {
   }
 };
 
-/* //unique project from list
-exports.getUniqueProject = async (req,res,next)=>{
-  res.send("unique project success");
-}
+//unique project from list
+exports.getUniqueService = async (req, res, next) => {
+  const serviceId = req.params.id;
+  try {
+    const result = await getUniqueServiceInfoSchema(serviceId);
 
+    res.status(200).json({
+      status: "success",
+      message: "Service Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Services Data an error occurred",
+      error: error.message,
+    });
+  }
+};
+exports.updateUniqueService = async (req, res, next) => {
+  const serviceId = req.params.id;
+  const updatedData = req.body;
+  try {
+    const result = await updateUniqueServiceInfoSchema(serviceId, updatedData);
+
+    res.status(200).json({
+      status: "success",
+      message: "Service Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Services Data an error occurred",
+      error: error.message,
+    });
+  }
+};
+/*
 exports.updateUniqueProject = async (req,res,next)=>{
   res.send("unique project Updated!!");
 }

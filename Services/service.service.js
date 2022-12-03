@@ -3,6 +3,7 @@
 //Service content section
 const serviceContentInfo = require("../Models/serviceContentInfo");
 const servicesListInfo = require("../Models/serviceListInfo");
+const ObjectId = require("mongodb").ObjectId;
 
 exports.createServicesContentInfoSchema = async (data) => {
   const result = await serviceContentInfo.create(data);
@@ -18,7 +19,7 @@ exports.updateServicesContentInfoSchema = async (data) => {
   return result;
 };
 
-//-------------------Service list section-------------------
+//-------------------Service list all section-------------------
 exports.createServiceListInfoSchema = async (data) => {
   const result = await servicesListInfo.create(data);
   return result;
@@ -30,5 +31,18 @@ exports.getServiceListInfoSchema = async () => {
 };
 exports.updateServiceListInfoSchema = async (data) => {
   const result = await servicesListInfo.updateMany(data);
+  return result;
+};
+
+//------------------Service list single section------------------
+exports.getUniqueServiceInfoSchema = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const result = await servicesListInfo.find(query);
+  return result;
+};
+exports.updateUniqueServiceInfoSchema = async (id, updatedData) => {
+  const query = { _id: ObjectId(id) };
+  // const find = await servicesListInfo.find(query);
+  const result = await servicesListInfo.updateMany(query, updatedData);
   return result;
 };

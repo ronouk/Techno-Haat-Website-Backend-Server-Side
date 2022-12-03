@@ -16,5 +16,10 @@ router
   .post(serviceController.createServicesList)
   .get(serviceController.getServicesList)
   .put(serviceController.updateServicesList);
+//unique service route
+router
+  .route("/list/:id")
+  .get(serviceController.getUniqueService)
+  .put(serviceController.updateUniqueService);
 
 module.exports = router;
