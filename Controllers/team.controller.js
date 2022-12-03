@@ -8,6 +8,7 @@ const {
   updateTeamListInfoSchema,
   updateTeamInfoSchema,
   getTeamInfoSchema,
+  deleteTeamInfoSchema,
 } = require("../Services/team.service");
 
 //-----------------Team Content---------------------------
@@ -161,7 +162,7 @@ exports.updateTeam = async (req, res, next) => {
 exports.deleteTeam = async (req, res, next) => {
   const teamId = req.params.id;
   try {
-    const result = await getTeamInfoSchema(teamId);
+    const result = await deleteTeamInfoSchema(teamId);
 
     res.status(200).json({
       status: "success",
