@@ -17,5 +17,9 @@ router
   .post(teamController.createTeamList)
   .get(teamController.getTeamList)
   .put(teamController.updateTeamList);
+router
+  .route("/list/:id")
+  .get(teamController.getTeam)
+  .put(teamController.updateTeam);
 
 module.exports = router;

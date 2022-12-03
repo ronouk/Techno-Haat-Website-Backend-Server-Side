@@ -6,6 +6,8 @@ const {
   createTeamListInfoSchema,
   getTeamListInfoSchema,
   updateTeamListInfoSchema,
+  updateTeamInfoSchema,
+  getTeamInfoSchema,
 } = require("../Services/team.service");
 
 //-----------------Team Content---------------------------
@@ -116,15 +118,42 @@ exports.updateTeamList = async (req, res, next) => {
   }
 };
 
-/* //unique project from list
-exports.getUniqueProject = async (req,res,next)=>{
-  res.send("unique project success");
-}
+//unique team fetch
+exports.getTeam = async (req, res, next) => {
+  const teamId = req.params.id;
+  try {
+    const result = await getTeamInfoSchema(teamId);
 
-exports.updateUniqueProject = async (req,res,next)=>{
-  res.send("unique project Updated!!");
-}
+    res.status(200).json({
+      status: "success",
+      message: "Team List Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Team List Data an error occurred",
+      error: error.message,
+    });
+  }
+};
 
-exports.deleteUniqueProject = async (req,res,next)=>{
-  res.send("unique project deleted!!");
-} */
+exports.updateTeam = async (req, res, next) => {
+  const teamId = req.params.id;
+  const teamData = req.body;
+  try {
+    const result = await updateTeamInfoSchema(teamId, teamData);
+
+    res.status(200).json({
+      status: "success",
+      message: "Team List Data Updated Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Team List couldn't update an error occurred",
+      error: error.message,
+    });
+  }
+};

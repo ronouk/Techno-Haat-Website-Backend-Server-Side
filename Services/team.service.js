@@ -3,6 +3,7 @@
 //---------------------Team content section---------------------
 const teamContentInfo = require("../Models/teamContentInfo");
 const teamsListInfo = require("../Models/teamListInfo");
+const ObjectId = require("mongodb").ObjectId;
 
 exports.createTeamContentInfoSchema = async (data) => {
   const result = await teamContentInfo.insertMany(data);
@@ -30,5 +31,18 @@ exports.getTeamListInfoSchema = async () => {
 };
 exports.updateTeamListInfoSchema = async (data) => {
   const result = await teamsListInfo.updateMany(data);
+  return result;
+};
+
+//-------------------Unique Team section-------------------
+exports.getTeamInfoSchema = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const result = await teamsListInfo.find(query);
+  return result;
+};
+
+exports.updateTeamInfoSchema = async (id, updatedData) => {
+  const query = { _id: ObjectId(id) };
+  const result = await teamsListInfo.updateMany(query, updatedData);
   return result;
 };
