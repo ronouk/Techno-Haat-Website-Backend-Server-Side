@@ -17,6 +17,7 @@ router
 router
   .route("/list/:id")
   .get(projectsController.getUniqueProject)
-  .put(projectsController.updateUniqueProject);
+  .put(projectsController.updateUniqueProject)
+  .delete(projectsController.deleteUniqueProject);
 
 module.exports = router;

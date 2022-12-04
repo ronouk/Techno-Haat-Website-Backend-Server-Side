@@ -34,3 +34,8 @@ exports.updateUniqueBlogInfoSchema = async (id, updatedData) => {
   const result = await blogListInfo.updateMany(query, updatedData);
   return result;
 };
+exports.deleteUniqueBlogInfoSchema = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const result = await blogListInfo.deleteOne(query);
+  return result;
+};

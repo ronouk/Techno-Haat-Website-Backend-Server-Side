@@ -47,3 +47,10 @@ exports.updateUniqueProjectInfoSchema = async (id, updatedData) => {
   const result = await projectsListInfo.updateMany(query, updatedData);
   return result;
 };
+
+exports.deleteUniqueProjectInfoSchema = async (id) => {
+  const query = { _id: ObjectId(id) };
+  const result = await projectsListInfo.deleteOne(query);
+  console.log(result);
+  return result;
+};

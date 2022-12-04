@@ -6,6 +6,7 @@ const {
   getUniqueBlogInfoSchema,
   updateUniqueBlogInfoSchema,
   getBlogListInfoSchema,
+  deleteUniqueBlogInfoSchema,
 } = require("../Services/blog.service");
 //------------------------blog Content------------------------
 exports.getBlogContent = async (req, res, next) => {
@@ -118,5 +119,20 @@ exports.updateBlogList = async (req, res, next) => {
   }
 };
 exports.deleteBlogList = async (req, res, next) => {
-  res.send("blog deleted!!");
+  const blogId = req.params.id;
+  try {
+    const result = await deleteUniqueBlogInfoSchema(blogId);
+
+    res.status(200).json({
+      status: "success",
+      message: "Blogs deleted Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Blogs delete failed an error occurred",
+      error: error.message,
+    });
+  }
 };
