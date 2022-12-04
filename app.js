@@ -20,7 +20,9 @@ const serviceRoute = require("./Routes/service.route");
 const teamRoute = require("./Routes/team.route");
 const expectationRoute = require("./Routes/expectation.route");
 const clientsRoute = require("./Routes/clients.route");
+const userRoute = require("./Routes/user.route");
 
+app.use("/user", userRoute);
 app.use("/about", aboutRoute);
 app.use("/blog", blogRoute);
 app.use("/footer", footerRoute);
