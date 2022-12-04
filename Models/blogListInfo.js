@@ -6,7 +6,7 @@ const blogListInfoSchema = mongoose.Schema(
     category: {
       type: String,
     },
-    title: {
+    blogTitle: {
       type: String,
     },
     img: {
@@ -20,9 +20,9 @@ const blogListInfoSchema = mongoose.Schema(
     },
     description: [
       {
-        descriptionTitle: String,
-        img: String,
+        title: String,
         paragraph: String,
+        image: String,
       },
     ],
   },
