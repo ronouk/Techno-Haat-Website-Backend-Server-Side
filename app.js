@@ -20,7 +20,9 @@ const serviceRoute = require("./Routes/service.route");
 const teamRoute = require("./Routes/team.route");
 const expectationRoute = require("./Routes/expectation.route");
 const clientsRoute = require("./Routes/clients.route");
+const userRoute = require("./Routes/user.route");
 
+app.use("/user", userRoute);
 app.use("/about", aboutRoute);
 app.use("/blog", blogRoute);
 app.use("/footer", footerRoute);
@@ -73,9 +75,15 @@ app.get("/", (req, res) => {
 
   <p> Service List Section Api /service/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/service/list ">Click here for get Service List Section data</a></p>
 
+  <p>unique Service Api /service/list/:id  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/service/list ">Click here add a /and desire id into the url</a></p>
+
   <p> Team Content Section Api /team/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/team/content ">Click here for get Team Content Section data</a></p
   
   <p> Team List Section Api /team/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/team/list ">Click here for get Team List Section data</a></p>
+
+  <p> Blog Content Section Api /blog/content  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/blog/content ">Click here for get blog Content Section data</a></p>
+
+  <p> Blog List Section Api /blog/list  ► <a href="https://techno-haat-website-backend-server-side.vercel.app/blog/list ">Click here for get blog List Section data</a></p>
 
   `);
 });
