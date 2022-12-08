@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "Data insert successfully",
-      data: { result: others, token },
+      data: { token },
     });
   } catch (error) {
     res.status(400).json({
@@ -70,16 +70,24 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.getMe = async (req, res) => {
+exports.getMe = async (req, res, next) => {
   try {
     //   res.json(req.user);
-
     const result = await loginService(req.user?.email);
-    res.status(200).json({
-      status: "success",
+    console.log(result.email === req.user?.email);
+    if (req.user?.email === result.email) {
+      let data = {
+        email: result.email,
+        role: result.role,
+        firstName: result.firstName,
+        status: result.result,
+      };
+      res.status(200).json({
+        status: "success",
 
-      data: result,
-    });
+        data: data,
+      });
+    }
   } catch (error) {
     res.status(400).json({
       status: "error",
