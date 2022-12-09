@@ -37,7 +37,8 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      required: [true, "please provide user role"],
+      enum: ["viewer", "moderator", "admin"],
+      default: "viewer",
     },
     firstName: {
       type: String,
