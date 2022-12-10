@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
     if (!result) {
       return res.status(400).json({
         status: "error",
-        error: "no user found please create an account",
+        error: "No user found please create an account",
       });
     }
 
@@ -43,13 +43,13 @@ exports.login = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({
         status: "error",
-        error: "password is not correct",
+        error: "Password is not correct",
       });
     }
     if (result.status != "active") {
       return res.status(400).json({
         status: "error",
-        error: "account not active",
+        error: "Account not active",
       });
     }
 
@@ -58,13 +58,13 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      message: "Data insert successfully",
+      message: "Welcome!!",
       data: { token },
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Data couldn't insert",
+      message: "Login Error pls Check The Data",
       error: error.message,
     });
   }
