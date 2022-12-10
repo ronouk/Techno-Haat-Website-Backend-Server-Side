@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const navInfoSchema = mongoose.Schema({
   navLogo: {
-    data: Buffer,
-    contentType: String,
+    type: String,
   },
 });
 
