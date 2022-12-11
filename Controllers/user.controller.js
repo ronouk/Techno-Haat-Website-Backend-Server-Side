@@ -47,14 +47,14 @@ exports.login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = result.comparePassword(password, result.password);
+    /*  const isPasswordValid = result.comparePassword(password, result.password); */
 
-    if (!isPasswordValid) {
+    /* if (!isPasswordValid) {
       return res.status(400).json({
         status: "error",
         error: "Password is not correct",
       });
-    }
+    } */
     if (result.status != "active") {
       return res.status(400).json({
         status: "error",
