@@ -25,6 +25,7 @@ exports.getUserInfoSchema = async (id) => {
 
 exports.updateUserInfoSchema = async (id, updatedData) => {
   const query = { _id: ObjectId(id) };
+  console.log(updatedData);
   const result = await user.updateMany(query, updatedData);
   return result;
 };
