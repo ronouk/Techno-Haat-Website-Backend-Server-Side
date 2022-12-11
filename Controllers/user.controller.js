@@ -117,7 +117,8 @@ exports.getUsers = async (req, res, next) => {
         email: Element.email,
         role: Element.role,
         firstName: Element.firstName,
-        status: Element.result,
+        status: Element.status,
+        primary: Element.primary,
         createdAt: Element.createdAt,
         updatedAt: Element.updatedAt,
       });

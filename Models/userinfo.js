@@ -63,6 +63,11 @@ const userSchema = mongoose.Schema(
       type: String,
       validate: [validator.isURL, "pls provide a valid url"],
     },
+    primary: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
     status: {
       type: String,
       enum: ["active", "inactive", "blocked"],
