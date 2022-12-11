@@ -10,5 +10,12 @@ router.post("/create", userController.signup);
 router.post("/login", userController.login);
 
 router.get("/me", tokenVerification, userController.getMe);
+router.get("/list", userController.getUsers);
+
+router
+  .route("/list/:id")
+  .get(userController.getUser)
+  .put(userController.updateUser)
+  .delete(userController.deleteUser);
 
 module.exports = router;

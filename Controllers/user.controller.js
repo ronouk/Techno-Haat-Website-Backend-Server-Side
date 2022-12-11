@@ -1,4 +1,11 @@
-const { signupService, loginService } = require("../Services/user.service");
+const {
+  signupService,
+  loginService,
+  getUsersService,
+  getUserInfoSchema,
+  updateUserInfoSchema,
+  deleteUserInfoSchema,
+} = require("../Services/user.service");
 const bcryptjs = require("bcryptjs");
 const { generateToken } = require("../utils/token");
 
@@ -30,6 +37,8 @@ exports.login = async (req, res) => {
     }
 
     const result = await loginService(email);
+    3;
+    console.log(result);
 
     if (!result) {
       return res.status(400).json({
@@ -54,6 +63,7 @@ exports.login = async (req, res) => {
     }
 
     const token = generateToken(result);
+
     const { password: pwd, ...others } = result.toObject();
 
     res.status(200).json({
@@ -92,6 +102,94 @@ exports.getMe = async (req, res, next) => {
     res.status(400).json({
       status: "error",
       message: "Get User Data couldn't insert",
+      error: error.message,
+    });
+  }
+};
+
+exports.getUsers = async (req, res, next) => {
+  try {
+    const result = await getUsersService(req.body);
+    let data = [];
+    result.forEach((Element) => {
+      data.push({
+        id: Element._id,
+        email: Element.email,
+        role: Element.role,
+        firstName: Element.firstName,
+        status: Element.result,
+        createdAt: Element.createdAt,
+        updatedAt: Element.updatedAt,
+      });
+    });
+    res.status(200).json({
+      status: "success",
+      message: "Users Data get Successfully",
+      data: data,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Users data get error",
+      error: error.message,
+    });
+  }
+};
+
+//--------------------------single user--------------------------
+exports.getUser = async (req, res, next) => {
+  const userId = req.params.id;
+  try {
+    const result = await getUserInfoSchema(userId);
+
+    res.status(200).json({
+      status: "success",
+      message: "User List Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get User List Data an error occurred",
+      error: error.message,
+    });
+  }
+};
+
+exports.updateUser = async (req, res, next) => {
+  const userId = req.params.id;
+  const userData = req.body;
+  try {
+    const result = await updateUserInfoSchema(userId, userData);
+
+    res.status(200).json({
+      status: "success",
+      message: "User List Data Updated Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "User List couldn't update an error occurred",
+      error: error.message,
+    });
+  }
+};
+
+exports.deleteUser = async (req, res, next) => {
+  const userId = req.params.id;
+  try {
+    const result = await deleteUserInfoSchema(userId);
+
+    res.status(200).json({
+      status: "success",
+      message: "User List Data is deleted",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't deleted User List Data an error occurred",
       error: error.message,
     });
   }
