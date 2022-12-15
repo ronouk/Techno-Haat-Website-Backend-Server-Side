@@ -6,8 +6,8 @@ const footerController = require("../Controllers/footer.controller");
 
 router
   .route("/")
-  .post(footerController.createFooter)
   .get(footerController.getFooter)
-  .put(footerController.updateFooter);
+  .post(verifyToken, authorization("admin"), footerController.createFooter)
+  .put(verifyToken, authorization("admin"), footerController.updateFooter);
 
 module.exports = router;

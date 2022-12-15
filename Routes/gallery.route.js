@@ -2,13 +2,14 @@
 const express = require("express");
 const router = express.Router();
 const galleryController = require("../Controllers/gallery.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 router
   .route("/")
-  .post(galleryController.createGallery)
   .get(galleryController.getGallery)
-  .put(galleryController.updateGallery)
-  .delete(galleryController.deleteGallery);
+  .post(verifyToken, authorization("admin"), galleryController.createGallery)
+  .put(verifyToken, authorization("admin"), galleryController.updateGallery)
+  .delete(verifyToken, authorization("admin"), galleryController.deleteGallery);
 
 module.exports = router;

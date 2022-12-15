@@ -2,20 +2,33 @@
 const express = require("express");
 const router = express.Router();
 const blogController = require("../Controllers/blog.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 router
   .route("/content")
   .get(blogController.getBlogContent)
-  .put(blogController.updateBlogContent);
+  .put(
+    verifyToken,
+    authorization("admin", "moderator"),
+    blogController.updateBlogContent
+  );
 router
   .route("/list")
   .get(blogController.getBlogList)
-  .post(blogController.createBlogList);
+  .post(
+    verifyToken,
+    authorization("admin", "moderator"),
+    blogController.createBlogList
+  );
 router
   .route("/list/:id")
   .get(blogController.getBlogListWithId)
-  .put(blogController.updateBlogList)
-  .delete(blogController.deleteBlogList);
+  .put(
+    verifyToken,
+    authorization("admin", "moderator"),
+    blogController.updateBlogList
+  )
+  .delete(verifyToken, authorization("admin"), blogController.deleteBlogList);
 
 module.exports = router;

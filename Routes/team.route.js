@@ -2,25 +2,46 @@
 const express = require("express");
 const router = express.Router();
 const teamController = require("../Controllers/team.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 //team content route
 router
   .route("/content")
-  .post(teamController.createTeamContent)
   .get(teamController.getTeamContent)
-  .put(teamController.updateTeamContent);
+  .post(
+    verifyToken,
+    authorization("admin", "moderator"),
+    teamController.createTeamContent
+  )
+  .put(
+    verifyToken,
+    authorization("admin", "moderator"),
+    teamController.updateTeamContent
+  );
 
 //team list route
 router
   .route("/list")
-  .post(teamController.createTeamList)
   .get(teamController.getTeamList)
-  .put(teamController.updateTeamList);
+  .post(
+    verifyToken,
+    authorization("admin", "moderator"),
+    teamController.createTeamList
+  )
+  .put(
+    verifyToken,
+    authorization("admin", "moderator"),
+    teamController.updateTeamList
+  );
 router
   .route("/list/:id")
   .get(teamController.getTeam)
-  .put(teamController.updateTeam)
-  .delete(teamController.deleteTeam);
+  .put(
+    verifyToken,
+    authorization("admin", "moderator"),
+    teamController.updateTeam
+  )
+  .delete(verifyToken, authorization("admin"), teamController.deleteTeam);
 
 module.exports = router;
