@@ -2,7 +2,8 @@
 const express = require("express");
 const router = express.Router();
 const footerController = require("../Controllers/footer.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 router
   .route("/")
