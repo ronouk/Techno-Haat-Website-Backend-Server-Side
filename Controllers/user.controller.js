@@ -62,8 +62,26 @@ exports.login = async (req, res) => {
       });
     }
 
-    const token = generateToken(result);
+    function makeid(length) {
+      var result = "";
+      var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var charactersLength = characters.length;
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+      return result;
+    }
 
+    const token2 = generateToken(result);
+
+    let charPlace = token2.indexOf(".");
+    let payLoad = token2.slice(0, charPlace + 1);
+    let legitToken = token2.slice(charPlace + 1);
+    let secret = legitToken.slice(legitToken.indexOf("."));
+    const token = payLoad + makeid(10) + legitToken + secret;
     const { password: pwd, ...others } = result.toObject();
 
     res.status(200).json({
