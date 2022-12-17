@@ -2,12 +2,13 @@
 const express = require("express");
 const router = express.Router();
 const footerController = require("../Controllers/footer.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 router
   .route("/")
-  .post(footerController.createFooter)
   .get(footerController.getFooter)
-  .put(footerController.updateFooter);
+  .post(verifyToken, authorization("admin"), footerController.createFooter)
+  .put(verifyToken, authorization("admin"), footerController.updateFooter);
 
 module.exports = router;

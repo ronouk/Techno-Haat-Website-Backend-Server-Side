@@ -2,12 +2,13 @@
 const express = require("express");
 const router = express.Router();
 const navController = require("../Controllers/nav.controller");
-// const veryfyToken = require("../middleware/veryfyToken");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 router
   .route("/")
-  .post(navController.createNav)
   .get(navController.getNav)
-  .put(navController.updateNav);
+  .post(verifyToken, authorization("admin"), navController.createNav)
+  .put(verifyToken, authorization("admin"), navController.updateNav);
 
 module.exports = router;
