@@ -82,7 +82,7 @@ exports.login = async (req, res) => {
     let payLoad = token2.slice(0, charPlace + 1);
     let legitToken = token2.slice(charPlace + 1);
     let secret = legitToken.slice(legitToken.indexOf("."));
-    const token = payLoad + makeid(10) + legitToken + secret;
+    const token = payLoad + makeid(10) + legitToken;
     const { password: pwd, ...others } = result.toObject();
 
     res.status(200).json({
