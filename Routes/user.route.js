@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/create", userController.signup);
 router.post("/login", userController.login);
 
-router.get("/me", tokenVerification, userController.getMe);
+router.get("/me", userController.getMe);
 router.get("/list", userController.getUsers);
 
 router
