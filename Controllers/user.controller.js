@@ -56,6 +56,13 @@ exports.login = async (req, res) => {
         error: "Password is not correct",
       });
     } */
+    if (password !== result.password) {
+      console.log(password, result.password);
+      return res.status(400).json({
+        status: "error",
+        error: "Password is not correct",
+      });
+    }
     if (result.status != "active") {
       return res.status(400).json({
         status: "error",
@@ -75,7 +82,7 @@ exports.login = async (req, res) => {
       }
       return result;
     }
-
+    console.log(result.password);
     const token2 = generateToken(result);
 
     let charPlace = token2.indexOf(".");
