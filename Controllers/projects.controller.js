@@ -104,7 +104,32 @@ exports.getProjectsList = async (req, res, next) => {
 exports.getUniqueProject = async (req, res, next) => {
   const ProjectId = req.params.id;
   try {
-    const result = await getUniqueProjectInfoSchema(ProjectId);
+    const result = await getUniqueProjectInfoSchema(
+      ProjectId,
+      (projectName = null)
+    );
+
+    res.status(200).json({
+      status: "success",
+      message: "Project Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Can't get Project Data an error occurred",
+      error: error.message,
+    });
+  }
+};
+//get project from list by name
+exports.getProjectByName = async (req, res, next) => {
+  const projectName = req.params.name;
+  try {
+    const result = await getUniqueProjectInfoSchema(
+      (ProjectId = null),
+      projectName
+    );
 
     res.status(200).json({
       status: "success",

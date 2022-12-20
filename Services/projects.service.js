@@ -36,11 +36,19 @@ exports.getProjectsListInfoSchema = async () => {
 }; */
 
 //------------------Project list single section------------------
-exports.getUniqueProjectInfoSchema = async (id) => {
-  const query = { _id: ObjectId(id) };
-  const result = await projectsListInfo.find(query);
-  console.log(result);
-  return result;
+exports.getUniqueProjectInfoSchema = async (id, projectTitle) => {
+  if (id) {
+    const query = { _id: ObjectId(id) };
+    const result = await projectsListInfo.find(query);
+    return result;
+  }
+  if (projectTitle) {
+    var str = projectTitle;
+    str = str.replaceAll("-", " ");
+    const query = { projectTitle: str };
+    const result = await projectsListInfo.find(query);
+    return result;
+  }
 };
 exports.updateUniqueProjectInfoSchema = async (id, updatedData) => {
   const query = { _id: ObjectId(id) };
@@ -51,6 +59,5 @@ exports.updateUniqueProjectInfoSchema = async (id, updatedData) => {
 exports.deleteUniqueProjectInfoSchema = async (id) => {
   const query = { _id: ObjectId(id) };
   const result = await projectsListInfo.deleteOne(query);
-  console.log(result);
   return result;
 };

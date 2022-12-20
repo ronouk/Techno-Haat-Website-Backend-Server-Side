@@ -21,6 +21,8 @@ router
     authorization("admin", "moderator"),
     blogController.createBlogList
   );
+
+router.route("/:name").get(blogController.getBlogListWithTitle);
 router
   .route("/list/:id")
   .get(blogController.getBlogListWithId)

@@ -70,13 +70,13 @@ exports.getBlogList = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      message: "Blogs Content Data get Successfully",
+      message: "Blog Data Data get Successfully",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "error",
-      message: "Blogs Content data get error",
+      message: "Blog Data data get error",
       error: error.message,
     });
   }
@@ -84,7 +84,25 @@ exports.getBlogList = async (req, res, next) => {
 exports.getBlogListWithId = async (req, res, next) => {
   const blogId = req.params.id;
   try {
-    const result = await getUniqueBlogInfoSchema(blogId);
+    const result = await getUniqueBlogInfoSchema(blogId, (blogName = null));
+
+    res.status(200).json({
+      status: "success",
+      message: "Blog Data Data get Successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "Blog Data data get error",
+      error: error.message,
+    });
+  }
+};
+exports.getBlogListWithTitle = async (req, res, next) => {
+  const blogName = req.params.name;
+  try {
+    const result = await getUniqueBlogInfoSchema((blogId = null), blogName);
 
     res.status(200).json({
       status: "success",

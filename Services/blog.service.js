@@ -24,10 +24,19 @@ exports.createUniqueBlogInfoSchema = async (data) => {
   const result = await blogListInfo.insertMany(data);
   return result;
 };
-exports.getUniqueBlogInfoSchema = async (id) => {
-  const query = { _id: ObjectId(id) };
-  const result = await blogListInfo.find(query);
-  return result;
+exports.getUniqueBlogInfoSchema = async (id, blogTitle) => {
+  if (id) {
+    const query = { _id: ObjectId(id) };
+    const result = await blogListInfo.find(query);
+    return result;
+  }
+  if (blogTitle) {
+    var str = blogTitle;
+    str = str.replaceAll("-", " ");
+    const query = { blogTitle: str };
+    const result = await blogListInfo.find(query);
+    return result;
+  }
 };
 exports.updateUniqueBlogInfoSchema = async (id, updatedData) => {
   const query = { _id: ObjectId(id) };

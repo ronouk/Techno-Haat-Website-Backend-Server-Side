@@ -26,7 +26,7 @@ router
     authorization("admin", "moderator"),
     projectsController.createProjectsList
   );
-//unique service route
+//unique project route
 router
   .route("/list/:id")
   .get(projectsController.getUniqueProject)
@@ -40,5 +40,7 @@ router
     authorization("admin"),
     projectsController.deleteUniqueProject
   );
+//get project by name
+router.route("/:name").get(projectsController.getProjectByName);
 
 module.exports = router;
