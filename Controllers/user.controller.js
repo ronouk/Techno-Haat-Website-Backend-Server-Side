@@ -38,9 +38,6 @@ exports.login = async (req, res) => {
     }
 
     const result = await loginService(email);
-    3;
-    console.log(result);
-
     if (!result) {
       return res.status(400).json({
         status: "error",
@@ -48,16 +45,9 @@ exports.login = async (req, res) => {
       });
     }
 
-    /*  const isPasswordValid = result.comparePassword(password, result.password); */
+    const isPasswordValid = result.comparePassword(password, result.password);
 
-    /* if (!isPasswordValid) {
-      return res.status(400).json({
-        status: "error",
-        error: "Password is not correct",
-      });
-    } */
-    if (password !== result.password) {
-      console.log(password, result.password);
+    if (!isPasswordValid) {
       return res.status(400).json({
         status: "error",
         error: "Password is not correct",
@@ -82,7 +72,6 @@ exports.login = async (req, res) => {
       }
       return result;
     }
-    console.log(result.password);
     const token2 = generateToken(result);
 
     let charPlace = token2.indexOf(".");
@@ -110,7 +99,6 @@ exports.getMe = async (req, res, next) => {
   try {
     //   res.json(req.user);
     const result = await loginService(req.user?.email);
-    console.log(result.email === req.user?.email);
     if (req.user?.email === result.email) {
       let data = {
         email: result.email,

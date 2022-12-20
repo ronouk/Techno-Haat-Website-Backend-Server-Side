@@ -80,19 +80,10 @@ const userSchema = mongoose.Schema(
 
   { timestamps: true }
 );
-/* 
+
 // password hashing
 userSchema.pre("save", function (next) {
   const password = this.password;
-  console.log(password, "this is password");
-  const hashedPassword = bcryptjs.hashSync(password);
-  this.password = hashedPassword;
-  this.confirmPassword = undefined;
-  next();
-});
-userSchema.pre("findOneAndUpdate", function (next) {
-  const password = this.password;
-  console.log(password, "this is password");
   const hashedPassword = bcryptjs.hashSync(password);
   this.password = hashedPassword;
   this.confirmPassword = undefined;
@@ -102,7 +93,7 @@ userSchema.pre("findOneAndUpdate", function (next) {
 userSchema.methods.comparePassword = function (password, hash) {
   const isPasswordValid = bcryptjs.compareSync(password, hash);
   return isPasswordValid;
-}; */
+};
 
 const user = mongoose.model("user", userSchema);
 module.exports = user;

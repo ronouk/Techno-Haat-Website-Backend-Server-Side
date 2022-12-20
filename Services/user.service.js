@@ -1,5 +1,6 @@
 const user = require("../Models/userinfo");
 const ObjectId = require("mongodb").ObjectId;
+const bcryptjs = require("bcryptjs");
 
 exports.signupService = async (userInfo) => {
   const result = await user.create(userInfo);
@@ -23,9 +24,11 @@ exports.getUserInfoSchema = async (id) => {
   return result;
 };
 
-exports.updateUserInfoSchema = async (id, updatedData) => {
+exports.updateUserInfoSchema = async (id, data) => {
   const query = { _id: ObjectId(id) };
-  console.log(updatedData);
+  const hashedPassword = bcryptjs.hashSync(data.password);
+  let { password, confirmPassword, ...updatedData } = data;
+  updatedData.password = hashedPassword;
   const result = await user.updateMany(query, updatedData);
   return result;
 };
