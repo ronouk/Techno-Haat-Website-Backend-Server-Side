@@ -2,20 +2,21 @@
 const express = require("express");
 const { route } = require("../app");
 const userController = require("../Controllers/user.controller");
-const tokenVerification = require("../middleware/tokenVerification");
+const verifyToken = require("../middleware/tokenVerification");
+const authorization = require("../middleware/authorization");
 
 const router = express.Router();
 
 router.post("/create", userController.signup);
 router.post("/login", userController.login);
 
-router.get("/me", tokenVerification, userController.getMe);
-router.get("/list", userController.getUsers);
+router.get("/me", verifyToken, userController.getMe);
+router.get("/list", verifyToken, userController.getUsers);
 
 router
   .route("/list/:id")
   .get(userController.getUser)
-  .put(userController.updateUser)
-  .delete(userController.deleteUser);
+  .put(verifyToken, authorization("admin"), userController.updateUser)
+  .delete(verifyToken, authorization("admin"), userController.deleteUser);
 
 module.exports = router;

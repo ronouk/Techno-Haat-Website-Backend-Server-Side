@@ -44,7 +44,6 @@ exports.login = async (req, res) => {
         error: "No user found please create an account",
       });
     }
-
     const isPasswordValid = result.comparePassword(password, result.password);
 
     if (!isPasswordValid) {
