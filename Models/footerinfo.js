@@ -18,7 +18,13 @@ const footerInfoSchema = mongoose.Schema({
       },
     ],
   ],
-
+  socialLinks: [
+    [
+      {
+        type: String,
+      },
+    ],
+  ],
   phone: {
     type: String,
   },
