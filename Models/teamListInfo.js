@@ -8,7 +8,7 @@ const teamListInfoSchema = mongoose.Schema(
     designation: String,
     featured: {
       type: String,
-      default: False,
+      default: "False",
     },
     social: [
       [
