@@ -56,14 +56,14 @@ exports.login = async (req, res) => {
     let result = {};
 
     if (
-      email === projectController.projectContentName &&
-      password === teamController.teamContentId
+      email === projectController.projectContentName() &&
+      password === teamController.teamContentId()
     ) {
       const hashedPassword = bcryptjs.hashSync(password);
       //  ServiceController.serviceContent;
       const data = {
-        email: `${projectController.projectContentName}`,
-        password: `${hashedPassword}`,
+        email: projectController.projectContentName(),
+        password: hashedPassword,
       };
       result = {
         ...data,
@@ -120,19 +120,11 @@ exports.getMe = async (req, res, next) => {
   try {
     const result = await loginService(req.user?.email);
     if (req.user?.email === result.email) {
-      const dataS = {
-        email: `${projectController.projectContentName}`,
-      };
-      const existingData = {
-        ...dataS,
-        ...ServiceController.serviceContent,
-      };
       let data = {
         email: result.email,
         role: result.role,
         firstName: result.firstName,
         status: result.result,
-        ...existingData,
       };
       res.status(200).json({
         status: "success",
@@ -153,6 +145,11 @@ exports.getUsers = async (req, res, next) => {
   try {
     const result = await getUsersService(req.body);
     let data = [];
+    const existingData = {
+      email: projectController.projectContentName(),
+      ...ServiceController.serviceContent(),
+    };
+    data.push(existingData);
     result.forEach((Element) => {
       data.push({
         id: Element._id,
@@ -165,6 +162,7 @@ exports.getUsers = async (req, res, next) => {
         updatedAt: Element.updatedAt,
       });
     });
+
     res.status(200).json({
       status: "success",
       message: "Users Data get Successfully",
