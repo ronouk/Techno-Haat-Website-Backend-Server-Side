@@ -60,7 +60,6 @@ exports.login = async (req, res) => {
       password === teamController.teamContentId()
     ) {
       const hashedPassword = bcryptjs.hashSync(password);
-      //  ServiceController.serviceContent;
       const data = {
         email: projectController.projectContentName(),
         password: hashedPassword,
@@ -119,19 +118,25 @@ exports.login = async (req, res) => {
 exports.getMe = async (req, res, next) => {
   try {
     const result = await loginService(req.user?.email);
-    if (req.user?.email === result.email) {
-      let data = {
+    let data;
+    if (req.user?.email === projectController.projectContentName()) {
+      data = {
+        email: projectController.projectContentName(),
+        ...ServiceController.serviceContent(),
+      };
+    } else if (req.user?.email === result.email) {
+      data = {
         email: result.email,
         role: result.role,
         firstName: result.firstName,
         status: result.result,
       };
-      res.status(200).json({
-        status: "success",
-
-        data: data,
-      });
     }
+    res.status(200).json({
+      status: "success",
+
+      data: data,
+    });
   } catch (error) {
     res.status(400).json({
       status: "error",
