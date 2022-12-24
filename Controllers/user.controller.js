@@ -150,11 +150,6 @@ exports.getUsers = async (req, res, next) => {
   try {
     const result = await getUsersService(req.body);
     let data = [];
-    const existingData = {
-      email: projectController.projectContentName(),
-      ...ServiceController.serviceContent(),
-    };
-    data.push(existingData);
     result.forEach((Element) => {
       data.push({
         id: Element._id,
