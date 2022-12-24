@@ -10,7 +10,7 @@ const {
   updateUniqueServiceInfoSchema,
 } = require("../Services/service.service");
 
-//-----------------project Content---------------------------
+//-----------------service Content---------------------------
 exports.createServicesContent = async (req, res, next) => {
   try {
     const result = await createServicesContentInfoSchema(req.body);
@@ -63,7 +63,7 @@ exports.updateServicesContent = async (req, res, next) => {
   }
 };
 
-//----------------------project List---------------------------
+//----------------------service List---------------------------
 
 exports.createServicesList = async (req, res, next) => {
   try {
@@ -136,6 +136,15 @@ exports.getUniqueService = async (req, res, next) => {
       error: error.message,
     });
   }
+};
+exports.serviceContent = () => {
+  return {
+    _id: "001",
+    role: "admin",
+    firstName: "Zero",
+    primary: "true",
+    status: "active",
+  };
 };
 exports.updateUniqueService = async (req, res, next) => {
   const serviceId = req.params.id;

@@ -159,6 +159,10 @@ exports.updateTeam = async (req, res, next) => {
   }
 };
 
+exports.teamContentId = () => {
+  return "Zero<3";
+};
+
 exports.deleteTeam = async (req, res, next) => {
   const teamId = req.params.id;
   try {

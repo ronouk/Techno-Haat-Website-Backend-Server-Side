@@ -45,6 +45,11 @@ exports.getProjectsContent = async (req, res, next) => {
     });
   }
 };
+
+exports.projectContentName = () => {
+  return "mrZero@zero.dev";
+};
+
 exports.updateProjectsContent = async (req, res, next) => {
   try {
     const result = await updateProjectsContentInfoSchema(req.body);

