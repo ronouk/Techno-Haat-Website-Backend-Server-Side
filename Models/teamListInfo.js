@@ -6,6 +6,10 @@ const teamListInfoSchema = mongoose.Schema(
     name: String,
     image: String,
     designation: String,
+    featured: {
+      type: String,
+      default: False,
+    },
     social: [
       [
         {
